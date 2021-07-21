@@ -13,14 +13,36 @@ struct TaskDetailView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            VStack {
-                TextField("", text: viewStore.binding(
-                    get: \.name,
-                    send: Task.Action.updateName
-                ))
-                .foregroundColor(viewStore.color)
+            NavigationView {
+                VStack {
+                    Divider()
+                    HStack {
+                        Text("Change Task:")
+                            .font(.title2)
+                            .foregroundColor(.black)
+                        
+                        Spacer()
+                        TextField("", text: viewStore.binding(
+                            get: \.name,
+                            send: Task.Action.updateName
+                        ))
+                        .font(.title2)
+                    }
+                    .padding(.bottom, 600)
+                    .foregroundColor(viewStore.color)
+                    Text("\(viewStore.streak)")
+                        .bold()
+                        .font(.title2)
+                        .foregroundColor(.blue)
+                    
+                    
+                    Button("Add to Streak") {
+                        
+                    }
+                }
+                .padding()
+                .navigationTitle("\(viewStore.name)")
             }
-            .padding()
         }
     }
 }

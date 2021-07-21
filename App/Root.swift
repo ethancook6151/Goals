@@ -12,6 +12,8 @@ struct Root {
     struct State: Equatable {
         let date = Date()
         var text = ""
+        var lastDate = Date()
+        var streak: Int = 0
         var color: Color = .red
         
         var tasks: IdentifiedArrayOf<Task.State> = [
@@ -27,6 +29,7 @@ struct Root {
         case addTask
         case updateText(String)
         case updateColor(Color)
+        case updateStreak
     }
 }
 
@@ -54,7 +57,14 @@ extension Root {
             case let .updateColor(color):
                 state.color = color
                 return .none
-
+                
+            case .updateStreak:
+                if state.lastDate != state.date {
+                    state.lastDate = state.date
+                    state.streak += 1
+                }
+                return .none
+                
             }
         }
     )
