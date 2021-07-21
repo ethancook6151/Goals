@@ -28,16 +28,31 @@ struct TaskDetailView: View {
                         ))
                         .font(.title2)
                     }
-                    .padding(.bottom, 600)
+//                    .padding(.bottom, 600)
                     .foregroundColor(viewStore.color)
-                    Text("\(viewStore.streak)")
-                        .bold()
-                        .font(.title2)
-                        .foregroundColor(.blue)
+                    Text("Streak: \(viewStore.streak)")
+                        .foregroundColor(.black)  // 2. Set the foreground/font color to white
+                        .font(.title)             // 3. Change the font type
+                        .padding([.top, .bottom], 200)
                     
                     
-                    Button("Add to Streak") {
-                        
+                    //                    Button("Add to Streak") {
+                    //                        viewStore.send(Task.)
+                    //                    }
+                    Button(action: {
+                        print("Delete tapped!")
+                    }) {
+                        HStack {
+                            Image(systemName: "trash")
+                                .font(.title)
+                            Text("Delete")
+                                .fontWeight(.semibold)
+                                .font(.title)
+                        }
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(LinearGradient(gradient: Gradient(colors: [Color.red, Color.blue]), startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(40)
                     }
                 }
                 .padding()

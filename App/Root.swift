@@ -59,10 +59,11 @@ extension Root {
                 return .none
                 
             case .updateStreak:
-                if state.lastDate != state.date {
-                    state.lastDate = state.date
-                    state.streak += 1
-                }
+//                if state.lastDate != state.date {
+//                    state.lastDate = state.date
+//                    state.streak += 1
+//                }
+                state.streak += 1
                 return .none
                 
             }
