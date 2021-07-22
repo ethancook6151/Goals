@@ -14,16 +14,20 @@ struct NewTaskView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack {
-                TextField("Title", text: viewStore.binding(get: \.text, send: Root.Action.updateText))
+                TextField("Task", text: viewStore.binding(get: \.text, send: Root.Action.updateText))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .font(.title2)
                 
                 ColorPicker("color", selection: viewStore.binding(get: \.color, send: Root.Action.updateColor))
-                
+                    .font(.title2)
+                    .padding()
                 Button("Add Task") {
                     viewStore.send(.addTask)
                 }
+                Spacer()
             }
             .padding()
+            .padding(.top, 75)
         }
     }
 }

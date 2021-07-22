@@ -14,10 +14,14 @@ struct Task {
         var name = "Untitled"
         var streak = 0
         var color: Color
+        var longestStreak: Int = 0
     }
     
     enum Action: Equatable {
         case updateName(String)
+        case updateStreak
+        case updateColor(Color)
+//        case removeTask
     }
 }
 
@@ -28,6 +32,20 @@ extension Task {
             state.name = string
             return .none
             
+        case .updateStreak:
+            state.streak += 1
+            if state.streak > state.longestStreak {
+                state.longestStreak = state.streak
+            }
+            return .none
+            
+        case let .updateColor(Color):
+            state.color = Color
+            return .none
+            
+//        case .removeTask:
+//            return .none
+        
         }
     }
 }

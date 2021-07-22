@@ -49,7 +49,7 @@ extension Root {
             case .addTask:
                 state.tasks.append(.init(name: state.text, streak: 0, color: state.color))
                 return .none
-                
+                 
             case let .updateText(string):
                 state.text = string
                 return .none

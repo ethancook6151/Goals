@@ -14,7 +14,9 @@ struct RootView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             NavigationView {
+
                 ScrollView {
+                    Divider()
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2)) {
                         ForEachStore(
                             store.scope(
@@ -30,7 +32,7 @@ struct RootView: View {
                     }
                 }
                 .padding([.horizontal])
-                .navigationTitle("\(viewStore.date.formattedDescription)")
+                .navigationTitle("Goals: \t\(viewStore.date.formattedDescription)")
             }
         }
     }
