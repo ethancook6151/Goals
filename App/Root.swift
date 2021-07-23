@@ -27,6 +27,7 @@ struct Root {
     enum Action: Equatable {
         case tasks(id: Task.State.ID, action: Task.Action)
         case addTask
+//        case removeTask(String)
         case updateText(String)
         case updateColor(Color)
         case updateStreak
@@ -49,6 +50,12 @@ extension Root {
             case .addTask:
                 state.tasks.append(.init(name: state.text, streak: 0, color: state.color))
                 return .none
+            
+//            case let .removeTask(name):
+//                if let index = state.tasks.firstIndex(of: ViewStore.) {
+//                    state.tasks.remove(index)
+//                }
+//                return .none
                  
             case let .updateText(string):
                 state.text = string
@@ -59,10 +66,10 @@ extension Root {
                 return .none
                 
             case .updateStreak:
-//                if state.lastDate != state.date {
-//                    state.lastDate = state.date
-//                    state.streak += 1
-//                }
+                if state.lastDate != state.date {
+                    state.lastDate = state.date
+                    state.streak += 1
+                }
                 state.streak += 1
                 return .none
                 

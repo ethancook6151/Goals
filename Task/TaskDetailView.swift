@@ -40,6 +40,99 @@ struct TaskDetailView: View {
                         .font(.title2)
                         .foregroundColor(viewStore.color)
                     
+                    
+                    
+                    
+                    HStack {
+                        Button("Mon") {
+                            viewStore.send(Task.Action.updateMonColor)
+                        }
+                        .padding(5)
+                        .overlay(
+                                Rectangle()
+                                    .stroke(lineWidth: 2.0)
+                            )
+                        .foregroundColor(.black)
+                        .background(viewStore.monColor)
+                        
+                        Button("Tues") {
+                            viewStore.send(Task.Action.updateTuesColor)
+                        }
+                        .padding(5)
+                        .overlay(
+                                Rectangle()
+                                    .stroke(lineWidth: 2.0)
+                            )
+                        .foregroundColor(.black)
+                        .background(viewStore.tuesColor)
+                        
+                        Button("Wed") {
+                            viewStore.send(Task.Action.updateWedColor)
+                        }
+                        .padding(5)
+                        .overlay(
+                                Rectangle()
+                                    .stroke(lineWidth: 2.0)
+                            )
+                        .foregroundColor(.black)
+                        .background(viewStore.wedColor)
+                        
+                        Button("Thur") {
+                            viewStore.send(Task.Action.updateThurColor)
+                        }
+                        .padding(5)
+                        .overlay(
+                                Rectangle()
+                                    .stroke(lineWidth: 2.0)
+                            )
+                        .foregroundColor(.black)
+                        .background(viewStore.thurColor)
+                        
+                        Button("Fri") {
+                            viewStore.send(Task.Action.updateFriColor)
+                        }
+                        .padding(5)
+                        .overlay(
+                                Rectangle()
+                                    .stroke(lineWidth: 2.0)
+                            )
+                        .foregroundColor(.black)
+                        .background(viewStore.friColor)
+                        
+                        Button("Sat") {
+                            viewStore.send(Task.Action.updateSatColor)
+                        }
+                        .padding(5)
+                        .overlay(
+                                Rectangle()
+                                    .stroke(lineWidth: 2.0)
+                            )
+                        .foregroundColor(.black)
+                        .background(viewStore.satColor)
+                        
+                        Button("Sun") {
+                            viewStore.send(Task.Action.updateSunColor)
+                        }
+                        .padding(5)
+                        .overlay(
+                                Rectangle()
+                                    .stroke(lineWidth: 2.0)
+                            )
+                        .foregroundColor(.black)
+                        .background(viewStore.sunColor)
+                        
+                        
+                        
+                            
+                            
+                    }
+                    .padding(2)
+                    
+                    
+                    
+                    
+                    
+                    
                     Text("Streak: \(viewStore.streak)")
                         .foregroundColor(.black)  // 2. Set the foreground/font color to white
                         .font(.title)             // 3. Change the font type
