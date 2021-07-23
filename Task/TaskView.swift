@@ -2,7 +2,7 @@
 //  TaskView.swift
 //  Goals
 //
-//  Created by Kody Deda on 7/20/21.
+//  Created by Kody Deda \ Ethan Cook on 7/20/21.
 //
 
 import SwiftUI

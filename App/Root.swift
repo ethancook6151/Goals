@@ -2,7 +2,7 @@
 //  AppState.swift
 //  Goals
 //
-//  Created by Kody Deda on 7/20/21.
+//  Created by Kody Deda \ Ethan Cook on 7/20/21.
 //
 
 import SwiftUI
@@ -12,7 +12,6 @@ struct Root {
     struct State: Equatable {
         let date = Date()
         var text = ""
-        var lastDate = Date()
         var streak: Int = 0
         var color: Color = .red
         
@@ -27,10 +26,8 @@ struct Root {
     enum Action: Equatable {
         case tasks(id: Task.State.ID, action: Task.Action)
         case addTask
-//        case removeTask(String)
         case updateText(String)
         case updateColor(Color)
-        case updateStreak
     }
 }
 
@@ -65,13 +62,6 @@ extension Root {
                 state.color = color
                 return .none
                 
-            case .updateStreak:
-                if state.lastDate != state.date {
-                    state.lastDate = state.date
-                    state.streak += 1
-                }
-                state.streak += 1
-                return .none
                 
             }
         }

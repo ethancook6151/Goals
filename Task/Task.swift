@@ -2,9 +2,10 @@
 //  TaskState.swift
 //  Goals
 //
-//  Created by Kody Deda on 7/20/21.
+//  Created by Kody Deda \ Ethan Cook on 7/20/21.
 //
 
+import Foundation
 import SwiftUI
 import ComposableArchitecture
 
@@ -15,6 +16,12 @@ struct Task {
         var streak = 0
         var color: Color
         var longestStreak: Int = 0
+        let date = Date()
+        var lastDate: String = ""
+        let dateFormatter = DateFormatter()
+        
+        
+        
         var mon: Bool = false
         var monColor: Color = .clear
         var tues: Bool = false
@@ -31,6 +38,7 @@ struct Task {
         var sunColor: Color = .clear
         
     }
+
     
     enum Action: Equatable {
         case updateName(String)
@@ -55,14 +63,48 @@ extension Task {
             return .none
             
         case .updateStreak:
-            state.streak += 1
+            // Check day of the week and see if it is a selected day
+            // Only allow the 
+            if state.date.formattedDescriptionWeekday.contains("Monday")  && ((state.mon == true) && (state.date.formattedDescription != state.lastDate) ) {
+                state.streak += 1
+                state.lastDate = state.date.formattedDescription
+            }
+            if state.date.formattedDescriptionWeekday.contains("Tuesday")  && ((state.tues == true) && (state.date.formattedDescription != state.lastDate)) {
+                state.streak += 1
+                state.lastDate = state.date.formattedDescription
+            }
+            if state.date.formattedDescriptionWeekday.contains("Wednesday")  && ((state.wed == true) && (state.date.formattedDescription != state.lastDate)) {
+                state.streak += 1
+                state.lastDate = state.date.formattedDescription
+            }
+            if state.date.formattedDescriptionWeekday.contains("Thursday")  && ((state.thur == true) && (state.date.formattedDescription != state.lastDate)) {
+                state.streak += 1
+                state.lastDate = state.date.formattedDescription
+            }
+            if state.date.formattedDescriptionWeekday.contains("Friday")  && ((state.fri == true) && (state.date.formattedDescription != state.lastDate)){
+                state.streak += 1
+                state.lastDate = state.date.formattedDescription
+            }
+            if state.date.formattedDescriptionWeekday.contains("Saturday")  && ((state.sat == true) && (state.date.formattedDescription != state.lastDate)) {
+                state.streak += 1
+                state.lastDate = state.date.formattedDescription
+            }
+            if state.date.formattedDescriptionWeekday.contains("Sunday")  && ((state.sun == true) && (state.date.formattedDescription != state.lastDate)) {
+                state.streak += 1
+                state.lastDate = state.date.formattedDescription
+            }
+            
+            // See if the current streak is more the the longest streak so far
             if state.streak > state.longestStreak {
                 state.longestStreak = state.streak
             }
             return .none
             
         case let .updateColor(Color):
+            // Change color
             state.color = Color
+            
+            // If a day of the weeek is selected then set the color to the main color selected
             if state.mon == true {
                 state.monColor = state.color
             }
@@ -87,6 +129,7 @@ extension Task {
             return .none
         
         case .updateMonColor:
+            // Switches the days of the week on and off for goal schedule
             if state.mon == false {
                 state.mon = true
                 state.monColor = state.color
@@ -98,6 +141,7 @@ extension Task {
             return .none
             
         case .updateTuesColor:
+            // Switches the days of the week on and off for goal schedule
             if state.tues == false {
                 state.tues = true
                 state.tuesColor = state.color
@@ -109,6 +153,7 @@ extension Task {
             return .none
             
         case .updateWedColor:
+            // Switches the days of the week on and off for goal schedule
             if state.wed == false {
                 state.wed = true
                 state.wedColor = state.color
@@ -120,6 +165,7 @@ extension Task {
             return .none
             
         case .updateThurColor:
+            // Switches the days of the week on and off for goal schedule
             if state.thur == false {
                 state.thur = true
                 state.thurColor = state.color
@@ -131,6 +177,7 @@ extension Task {
             return .none
             
         case .updateFriColor:
+            // Switches the days of the week on and off for goal schedule
             if state.fri == false {
                 state.fri = true
                 state.friColor = state.color
@@ -142,6 +189,7 @@ extension Task {
             return .none
             
         case .updateSatColor:
+            // Switches the days of the week on and off for goal schedule
             if state.sat == false {
                 state.sat = true
                 state.satColor = state.color
@@ -153,6 +201,7 @@ extension Task {
             return .none
             
         case .updateSunColor:
+            // Switches the days of the week on and off for goal schedule
             if state.sun == false {
                 state.sun = true
                 state.sunColor = state.color

@@ -2,7 +2,7 @@
 //  TaskDetailView.swift
 //  Goals
 //
-//  Created by Kody Deda on 7/20/21.
+//  Created by Kody Deda \ Ethan Cook on 7/20/21.
 //
 
 import SwiftUI
@@ -120,18 +120,8 @@ struct TaskDetailView: View {
                             )
                         .foregroundColor(.black)
                         .background(viewStore.sunColor)
-                        
-                        
-                        
-                            
-                            
                     }
                     .padding(2)
-                    
-                    
-                    
-                    
-                    
                     
                     Text("Streak: \(viewStore.streak)")
                         .foregroundColor(.black)  // 2. Set the foreground/font color to white

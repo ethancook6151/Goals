@@ -2,7 +2,7 @@
 //  AppView.swift
 //  Goals
 //
-//  Created by Kody Deda on 7/20/21.
+//  Created by Kody Deda \ Ethan Cook on 7/20/21.
 //
 
 import SwiftUI
@@ -25,6 +25,7 @@ struct RootView: View {
                             ), content: TaskView.init(store:)
                         )
                     }
+                    
                 }
                 .toolbar {
                     NavigationLink(destination: NewTaskView(store: store)) {
